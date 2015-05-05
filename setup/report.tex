@@ -1,0 +1,139 @@
+\documentclass[a4paper, 12pt]{article}		% general format
+
+%%%% Charset
+\usepackage{cmap}							% make PDF files searchable and copyable
+\usepackage[utf8x]{inputenc}				% accept different input encodings
+\usepackage[T2A]{fontenc}					% Russian font
+\usepackage[russian]{babel}					% multilingual support (T2A)
+
+%%%% Graphics
+\usepackage[dvipsnames]{xcolor}			% driver-independent color extensions
+\usepackage{graphicx}						% enhanced support for graphics
+\usepackage{wrapfig}						% produces figures which text can flow around
+
+%%%% Math
+\usepackage{amsmath}						% American Mathematical Society (AMS) math facilities
+\usepackage{amsfonts}						% fonts from the AMS
+\usepackage{amssymb}						% additional math symbols
+
+%%%% Typography (don't forget about cm-super)
+\usepackage{microtype}						% subliminal refinements towards typographical perfection
+\linespread{1.3}							% line spacing
+\usepackage[left=2.5cm, right=1.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\setlength{\parindent}{0pt}					% we don't want any paragraph indentation
+\usepackage{parskip}						% add distance between paragraphs
+
+%%%% Tables
+\usepackage{tabularx}						% Normal tables
+\usepackage{multirow}						% for tabular
+\usepackage{hhline}							% for tabular
+
+
+%%%% Other
+\usepackage{url}							% verbatim with URL-sensitive line breaks
+\usepackage{fancyvrb}						% verbatim with box
+\setcounter{secnumdepth}{5}					%
+
+%------------------------------------------------------------------------------
+\usepackage{listings}						% typeset source code listings
+
+% Настройки отображения кода
+\lstset{
+	% Настройки отображения
+	breaklines=true,						% Перенос длинных строк
+	basicstyle=\ttfamily\footnotesize,		% Шрифт для отображения кода
+	frame=tblr								% draw a frame at all sides of the code block
+	tabsize=2,								% tab space width
+	showstringspaces=false,					% don't mark spaces in strings
+	% Настройка отображения номеров строк. Если не нужно, то удалите весь блок
+	numbers=left,							% Слева отображаются номера строк
+	stepnumber=1,							% Каждую строку нумеровать
+	numbersep=5pt,							% Отступ от кода
+	numberstyle=\small\color{black},		% Стиль написания номеров строк
+}
+
+% Для настройки заголовка кода
+\usepackage{caption}
+\renewcommand{\lstlistingname}{Листинг} % Переименование Listings в нужное именование структуры
+%------------------------------------------------------------------------------
+\author{Семён Мартынов\\<semen.martynov@gmail.com>}
+\title{WSO2 Enterprsie Mobility Manager}
+\begin{document}
+\maketitle
+\tableofcontents{}
+
+%------------------------------------------------------------------------------
+
+\section{Введение}
+
+Компания WSO2 разрабатывает ряд продуктов на общей платформе Carbon и собственную среду разработки -- WSO2 Developer Studio.
+
+\section{WSO2 Enterprise Service Bus}
+
+Enterprise Service Bus обеспечит интеграцию с корпоративными сервисами.
+
+\section{WSO2 Enterprsie Mobility Manager}
+
+\subsection{Требования к хосту}
+
+От хоста, на котором будет запускаться Enterprsie Mobility Manager требуется иметь минимум 2ГБ свободной оперативной памяти (512МБ будут использованы для SOAP-сообщений, что достаточно для не большого количество пользователей но может создать проблемы при использовании в производственной среде). На винчестере потребуется порядка 1Гб, на считая маста, которое потребуется для хранения баз данных и лог-файлов.
+
+Все продукты WSO2 на платформе Carbon запускаются и нормально работают на Oracle JDK 1.6.*/1.7.*. Версия JDK 1.8 на данный момент не поддерживается. Также разработчики не рекомендуют использовать OpenJDK.
+
+В качестве базы данных можно использовать встроенное решение H2, которое обеспечивает потребности разработчиков и тестировщиков, но для развёртывания в реальной среде строит использовать полноценные СУБД -- Oracle, PostgreSQL, MySQL, MS SQL и т.д.
+
+Для интеграции с существующей базой пользователей, поддерживается интеграция с OpenLDAP.
+
+На клиентах (мобильных устройствах) на данный момент поддерживаются версии 6.0 - 7.0 для iOS, для Android:
+\begin{itemize}
+\item Ice Cream Sandwich (4.0.3 – 4.0.4)
+\item Jelly Bean (4.1 – 4.3.1)
+\item KitKat (4.4 – 4.4.4)
+\item Lollipop (5.0)
+\end{itemize}
+
+Общий список програмномного обеспечения, которое может потребоваться, выглядят следующим образом:
+
+\begin{tabular}{|c|c|c|}
+\hline 
+ПО & Версия & Примечание \\ 
+\hline 
+{Oracle JDK} & 1.6.24 или новее / 1.7 & Для запуска приложения \\ 
+\hline 
+MySQL & 5.6.* & База данных \\ 
+\hline 
+MySQL Connector/J & 5.1.* & Используется для свзи с БД \\ 
+\hline 
+Git & 1.8.* & Для доступа к репозиторию Android Agent \\ 
+\hline 
+Eclipse & Juno (4.2.1) или новее & Сборка клиентских приложений \\ 
+\hline 
+Android SDK & Уровень 8 - 17 & Сборка клиентских приложений \\ 
+\hline 
+Web-браузер & * & Для доступа к веб-интерфейсу \\ 
+\hline 
+Apache Ant & 1.7.0 или новее & Компиляция и сборка примеров приложений \\ 
+\hline 
+Apache Maven & 3.0.* & Сборка приложения из исходных кодов \\ 
+\hline 
+\end{tabular} 
+
+\subsection{Установка Java}
+
+\subsection{Запуск скрипта установки}
+
+\subsection{Добавление устройств}
+
+\section{WSO2 Developer Studio}
+
+WSO2 Developer Studio представляет из себя Eclipse дополненный набором плагинов от WSO2. Установка среды разработки от WSO2 делается аналогично обычному Eclipse, нужно просто распаковать zip-архив..
+
+Единственный важный момент о котором стоит помнить, это разнесение по портам различных продуктов WSO2 при их одновременном запуске. Для этой цели используется файла carbon.xml, а значения портов нужно прописать в теге <Offset>.
+
+Подключение Enterprsie Mobility Manager к Developer Studio позволяет обеспечить запуск и просмотр логи сразу из среды программирования.
+
+
+
+%------------------------------------------------------------------------------
+
+\end{document}
