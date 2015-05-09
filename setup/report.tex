@@ -191,7 +191,35 @@ J2REDIR=/usr/lib/jvm/java-7-oracle/jre
 
 Система готова к работе с WSO2 Enterprsie Mobility Manager.
 
-\subsection{Запуск скрипта установки}
+\subsection{Запуск Enterprsie Mobility Manager}
+
+WSO2 Enterprsie Mobility Manager можно собрать из исходников либо воспользоваться готовыми бинарниками, распространяемыми разработчиками (размер архива 277MB).
+
+\begin{Verbatim}[frame=single]
+user@wso2:~ wget http://product-dist.wso2.com/products/enterprise-mobility-ma
+nager/1.1.0/wso2emm-1.1.0.zip
+\end{Verbatim}
+
+Содержимосе архива нужно извлечь в директорию на винчестере, я предпочитаю для этого использовать opt.
+
+\begin{Verbatim}[frame=single]
+sudo unzip wso2emm-1.1.0.zip -d /opt
+\end{Verbatim}
+
+Для запуска воспользуемся скриптом из архива. Пока сделаем это от имени суперпользователя, позже разберёмся с правами более тонко.
+\begin{Verbatim}[frame=single]
+sudo -E sh /opt/wso2emm-1.1.0/bin/wso2server.sh
+\end{Verbatim}
+
+Когда система будет запущена, из браузера можно будет обратиться по адресу \url{https://192.168.124.185:9443/} (192.168.124.185 - мой IP виртуальной машины с WSO2 Enterprsie Mobility Manager) и получить доступ к панеле управления (рисунок 1). Имя пользователя и пароль по умолчанию admin.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.45]{res/EMM001}
+\caption{Web-интерфейс EMM}
+\end{figure}
+
+\subsection{Автоматический запус EMM}
 
 \subsection{Добавление устройств}
 
