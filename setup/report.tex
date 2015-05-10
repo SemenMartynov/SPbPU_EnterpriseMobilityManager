@@ -221,6 +221,24 @@ sudo -E sh /opt/wso2emm-1.1.0/bin/wso2server.sh
 
 \subsection{Автоматический запус EMM}
 
+В предыдущем пункте мы рассмотрели ручной запуск приложения. Это удобно для разработки и отладки, но на реальном сервере требуется запуск в качестве сервиса. Для этого можно использовать следующий скрипт (листинг 1).
+
+Этот скрипт будет работать с системой upstart. Для этого его нужно сохранить в директорию /etc/init.d/ и обновить кэш скриптов.
+
+\begin{Verbatim}[frame=single]
+sudo update-rc.d appserver defaults
+\end{Verbatim}
+
+После этого можно запускать приложение привычным образом.
+
+\begin{Verbatim}[frame=single]
+service WSO2EMM {start|stop|restart}
+\end{Verbatim}
+
+В связи с переходом Ubuntu и многих других ведущих дистрибутивов на работу с systemd, скрипт нужно будет переписать на работу с новой системой инициализации.
+
+\lstinputlisting[language={bash},caption={Скрипт WSO2EMM.sh}]{res/WSO2EMM.sh}
+
 \subsection{Добавление устройств}
 
 \section{WSO2 Developer Studio}
